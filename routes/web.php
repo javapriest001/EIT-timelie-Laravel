@@ -43,7 +43,7 @@ Route::prefix('admin')->controller(adminController::class)->middleware('adminLog
 
 //ACCOUNTANT ROUTE WITH GROUP MIDDLEWARE, AND CONTROLLER
 
-Route::prefix('accountant')->controller(accountantController::class)->group(function(){
+Route::prefix('accountant')->controller(accountantController::class)->middleware('staffLogin')->group(function(){
     Route::get('dashboard' , "index")->name('Accountantdashboard');
     Route::get('records' , "records")->name('records');
     Route::get('fees' , "fees")->name('fees');
@@ -52,9 +52,10 @@ Route::prefix('accountant')->controller(accountantController::class)->group(func
     Route::post('profile' ,  "updateprofile")->name('updateprofile');
    
 });
-//ACCOUNTANT ROUTE WITH GROUP MIDDLEWARE, AND CONTROLLER
 
-Route::prefix('deskofficer')->controller(deskofficerController::class)->group(function(){
+//DESKOFFICER ROUTE WITH GROUP MIDDLEWARE, AND CONTROLLER
+
+Route::prefix('deskofficer')->controller(deskofficerController::class)->middleware('staffLogin')->group(function(){
     Route::get('dashboard' , "index")->name('deskofficerdashboard');
     Route::get('records' , "records")->name('deskofficerrecords');
     Route::get('fees' , "fees")->name('deskofficerfees');

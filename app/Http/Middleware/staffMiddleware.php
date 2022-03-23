@@ -5,7 +5,7 @@ namespace App\Http\Middleware;
 use Closure;
 use Illuminate\Http\Request;
 
-class adminLogin
+class staffMiddleware
 {
     /**
      * Handle an incoming request.
@@ -16,8 +16,8 @@ class adminLogin
      */
     public function handle(Request $request, Closure $next)
     {
-        if(!session('loggedin')){
-            return redirect('admin')->with('LoginError' , 'You Must Be Logged In ');
+        if(!session('staffid')){
+            return redirect('/')->with('LoginError' , 'You Must Be Logged In ');
         }
         return $next($request);
     }
