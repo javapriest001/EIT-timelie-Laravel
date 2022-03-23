@@ -1,0 +1,579 @@
+/* Font Import */
+@import url('https://fonts.googleapis.com/css2?family=Cabin:ital,wght@0,400;0,500;1,400;1,500&family=Poppins:ital,wght@0,100;0,200;0,300;1,100;1,200&family=Signika:wght@300&display=swap');
+
+/* ROOT VARIABLES */
+
+:root{
+    --color-info-dark: #ccced1;
+    --color-info-ligt: #dce1eb;
+    --color-dark: #363649;
+    --color-light: rgba(132, 139, 208 , 0.18);
+    --color-background: #f6f6f9;
+    --color-main: #314a7c;
+    --color-white: #ffff;
+    --card-border-radius: 2rem;
+    --border-radius-1: 0.4rem;
+    --border-radius-2: 0.8rem;
+    --border-radius-3: 1.2rem;
+    --border-radius-4: 2rem;
+
+    --card-padding: 1.8rem;
+    --padding-1 : 1.2rem;
+
+    --box-shadow: 0.2rem 0 3rem var(--color-light);
+}
+*{
+    margin: 0;
+    padding: 0;
+    outline: 0;
+    appearance: none;
+    border: 0;
+    text-decoration: none;
+    list-style: none;
+    box-sizing: border-box;
+}
+html{
+    font-size : 14px;
+}
+
+body{
+    width: 100vw;
+    height: 100vh;
+    font-family: 'Poppins', sans-serif;
+    font-size: 0.88rem;
+    background: var(--color-background);
+    padding: 0;
+    overflow-x: hidden;
+}
+h1{
+    font-size: 5.0rem;
+}
+h2{
+    font-size: 3.0rem;
+}
+h3{
+    font-size: 1.5rem;
+}
+h4{
+    font-size: 1.0rem;
+}
+
+
+/*==================== SIDE NAVIGATION BAR ============== */
+aside{
+    background: var(--color-background) !important;
+}
+.top-nav{
+    /* background: white;  */
+    position: relative;
+    top: 0.5rem;
+}
+.top-nav a h3{
+    padding-top: 1.5rem !important;
+    margin-left: 2rem;
+    margin-top: 0 !important;
+    align-items: center !important;
+    color: black;
+
+}
+.close{
+    outline: none;
+    border: none;
+    background: transparent;
+    padding-top: 1.5rem;
+    margin-left: 4rem;
+    cursor: pointer;
+}
+.top-nav a span{
+
+    color: var(--color-main) ;
+    transition: all 300ms ease;
+    font-weight: 700;
+}
+.sidenav{
+    height: 86vh ;
+    position: relative;
+    top: 3rem;
+    /* background: white; */
+}
+.sidenav a{
+    display: flex;
+    gap: 0.8rem;
+    margin-left: 2rem;
+    margin-top: 0.8rem !important;
+    align-items: center !important;
+    position: relative;
+    height: 3.7rem;
+    transition: all 300ms ease;
+
+}
+.sidenav a:hover span{
+    margin-left: 1rem;
+}
+.sidenav a.active{
+    background: var(--color-light);
+    color: var(--color-dark);
+    margin-left: 0;
+}
+.sidenav a.active::before{
+    content: '';
+    width: 6px;
+    height: 100%;
+    background: var(--color-dark);
+}
+.sidenav .last-child{
+    position: absolute;
+    bottom: 2rem;
+    width:100%;
+}
+
+.row>*{
+    padding: 0;
+}
+.sidenav a span{
+    color: var(--color-main);
+    transition: all 300ms ease;
+
+}
+.sidenav a h4{
+    color: var(--color-dark);
+    font-weight: 500;
+
+}
+
+
+
+/*============= MAIN SECTOR STYLING ========================== */
+.welcome{
+    padding-top: 2rem;
+}
+.card-icon  span{
+    font-size: 4.5rem;
+    display: block;
+    
+}
+
+.bullet-icon{
+    font-size: 2rem;
+    background: var(--color-main);
+    border-radius: var(--border-radius-4);
+    padding: 0.5rem;
+    color: white;
+}
+.reportcard{
+
+    border-radius: var(--card-border-radius);
+    box-shadow: var(--box-shadow);
+    width: 18rem ;
+    border: none;
+    
+
+}
+
+
+.reportcard:hover{
+    box-shadow: none;
+    cursor: pointer;
+}
+.utilitycard {
+    margin-left: 4rem !important;
+}
+.deskcard{
+    margin-left: 2rem !important;
+}
+input[type="date"]{
+    outline: none;
+    border: none;
+    background: var(--color-info-dark);
+    width: 12rem;
+    /* color: var(--color-info-ligt); */
+}
+.form-control:focus {
+    color: #212529;
+    background: var(--color-info-dark) !important;
+    border-color: var(--color-info-dark) !important;
+    outline: 0;
+
+}
+
+.staff_list_card{
+    border-radius: var(--card-border-radius);
+    box-shadow: var(--box-shadow);
+    border: none;  
+    width: 56rem;
+    margin-top: 3rem ;
+    padding: var(--padding-1);
+    
+}
+.staff_list_card:hover{
+
+
+    box-shadow: none;
+    cursor: pointer;
+
+
+}
+tr:last-child{
+    border: transparent  solid 1px;
+}
+
+/* THIRD MAIN SECTION */
+.lastmain{
+    padding-top: 2rem;
+}
+
+
+.profile_img img{
+    width: 3rem;
+    height: 3rem;
+    margin-left: -2rem;
+    border-radius: var(--border-radius-4);
+}
+
+.fees{
+    padding: 0.5rem !important;
+    
+}
+.feecard{
+    border-radius: var(--card-border-radius);
+    box-shadow: var(--box-shadow);
+    border: none;  
+    width: 18rem;
+    margin-left: -5.8rem;
+}
+.feecard:hover{
+    box-shadow: none;
+    cursor: pointer;
+}
+
+.fee_intro{
+    margin-left: -5.8rem;
+    font-size: 1.2rem;
+}
+.feeicon span{
+    font-size: 2rem;
+    padding: 0;
+    background: var(--color-main);
+    border-radius: var(--border-radius-4);
+    color: white;
+}
+.addfeeicon{
+    font-size: 1rem;
+    padding: 0;
+    border-radius: var(--border-radius-4);
+    color: var(--color-main);
+}
+.feeamt{
+    font-size: 1rem;
+}
+.addfee{
+    border-radius: var(--card-border-radius);
+    box-shadow: 2px -1px 22px 0px var(--color-light) inset;
+    -webkit-box-shadow: 2px -1px 22px 0px var(--color-light) inset;
+    -moz-box-shadow: 2px -1px 22px 0px var(--color-light) inset;
+    width: 18rem;
+    margin-left: -5.8rem;
+    border: dashed  0.2rem var(--color-main)  ;
+}
+.fee_card_body{
+    padding-top: 0.5rem;
+    padding-bottom: 0.5rem;
+}
+.fee_card_body:hover{
+
+
+    box-shadow: none;
+    cursor: pointer;
+}
+.staffcard{
+    border-radius: var(--border-radius-2);
+    box-shadow: var(--box-shadow);
+    border: none;  
+    width: 18rem;
+    margin-left: -5.8rem;
+}
+
+.staffcard:hover{
+
+
+    box-shadow: none;
+    cursor: pointer;
+}
+
+.profile_name_mobile{
+    color: var(--color-main);
+    margin-left: 1.5rem;
+}
+.hamburger{
+    outline: none;
+    border: none;
+    background: transparent;
+    font-size: 3rem;
+    cursor: pointer;
+    margin-left: 0.5rem;
+}
+.hamburger span{
+   
+    font-size: 3rem;
+    margin-top: 0.48rem;
+    color: var(--color-main);
+   
+}
+.nav_brand_mobile h3{
+    color: black;
+    font-size: 1.5rem;
+    margin-left: 0.4rem;
+}
+.nav_brand_mobile span{
+    color: var(--color-main);
+    transition: all 300ms ease;
+    font-weight: 700;
+}
+.profile_img_mobile{
+    width: 3rem;
+    height: 3rem;
+    border-radius: var(--border-radius-4);
+    margin-left: 0.4rem;
+}
+/* ====================== MEDIA QUERY FOR MOBILE =====================*/
+
+@media screen and (max-width: 760px){
+
+  .container-fluid{
+      width: 100%;
+  }  
+  aside{
+      position: fixed;
+      left: -100;
+      width: 75%;
+      z-index: 3;
+      box-shadow: 1rem 3rem 4rem var(--color-light);
+      height: 100vh;
+      padding-right: var(--card-padding);  
+      display: none;
+      animation: showMenu 10000000ms ease-in forwards !important;
+  }
+
+  @keyframes showMenu {
+      from{
+        left: 0px;
+      }
+    to{
+
+          right: 10px;
+      }
+  }
+ .mobile_nav_bar{
+     position: fixed;
+     top: 0;
+     left: 0;
+     padding: 0 !important;
+ }
+ .welcome{
+    margin-top: 6rem;
+}
+    .reportcard{
+
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--box-shadow);
+        width: 100% ;
+        border: none;
+        /* border-bottom: 0.2rem solid var(--color-main); */
+        
+
+    }
+    .utilitycard {
+        margin-left: 0 !important;
+    }
+    .deskcard{
+        margin-left: 0 !important;
+    }
+    .staff_list_card{
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--box-shadow);
+        border: none;  
+        width: 100%;
+        margin-top: 3rem ;
+        overflow-x: visible;
+        /* padding: var(--padding-1); */
+        
+    }
+    .card-icon  span{
+        font-size: 5.5rem;
+        margin-left: 2rem;
+        display: block;
+    }
+    .feecard_mobile{  
+        border-radius: var(--card-border-radius);
+        box-shadow: var(--box-shadow);
+        border: none; 
+        
+    }
+    .feecard:hover{
+    
+    
+        box-shadow: none;
+        cursor: pointer;
+    }
+    
+    .fee_intro{
+        
+        font-size: 1.2rem;
+    }
+    .feeicon span{
+        font-size: 2rem;
+        padding: 0;
+        background: var(--color-main);
+        border-radius: var(--border-radius-4);
+        color: white;
+    }
+    .addfeeicon{
+        font-size: 1rem;
+        padding: 0;
+        border-radius: var(--border-radius-4);
+        color: var(--color-main);
+    }
+    .feeamt{
+        font-size: 1rem;
+    }
+    .addfee_mobile{
+        border-radius: var(--card-border-radius);
+        box-shadow: 2px -1px 22px 0px var(--color-light) inset;
+        -webkit-box-shadow: 2px -1px 22px 0px var(--color-light) inset;
+        -moz-box-shadow: 2px -1px 22px 0px var(--color-light) inset;
+        border: dashed  0.2rem var(--color-main)  ;
+    }
+    .staffcard_mobile{
+        border-radius: var(--border-radius-2);
+        box-shadow: var(--box-shadow);
+        border: none;  
+        
+        
+    }
+    .row>*{
+        padding: 0px 5px;
+    }
+    .reportcard:hover{
+        box-shadow: none;
+        cursor: pointer;
+    }
+    .card-icon  span{
+        font-size: 4.5rem;
+        display: block;
+        background: var(--color-main);
+        border-radius: var(--border-radius-2);
+        padding: 0.5rem;
+        color: whitesmoke;
+         border-bottom: 0.2rem solid var(--color-dark); 
+    }
+}
+
+
+/* ROLE PAGE */
+
+.staff_list_card_role{
+    border-radius: var(--card-border-radius);
+    box-shadow: var(--box-shadow);
+    border: none;  
+    /* width: 56rem; */
+    margin-top: 3rem ;
+    padding: var(--padding-1);
+}
+.addbutton{
+    display: inline-block;
+    font-weight: 700;
+    color: var(--color-white);
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+    user-select: none;
+    background-color: var(--color-main);
+    transition: all .15s ease-in;
+    padding: .5rem 2rem;
+    font-size: .75rem;
+    border-radius: .5rem;
+    margin-bottom: 0!important;
+    letter-spacing: -.025rem;
+    text-transform: none;
+    box-shadow: 0 4px 6px rgba(50,50,93,.1),0 1px 3px rgba(0,0,0,.08);
+    border: 0;
+    margin-bottom: 15px !important;
+}
+
+.addbutton:hover{
+  
+    box-shadow: 0 7px 14px rgb(50 50 93 / 10%), 0 3px 6px rgb(0 0 0 / 8%);
+    transform: translateY(-1px);
+    background: var(--color-light);
+
+}
+
+.addbutton span{
+    font-size: .75rem;
+    color: var(--color-white);
+    padding-right: .98rem;
+}
+
+/* =====================LOGIN FORM STYLES=================== */
+
+.login_body{
+    height: 100vh;
+    align-items: center;
+    overflow-y: hidden;
+    background-color: var(--color-background);
+    background-repeat: no-repeat;  
+    background-position: center;
+   
+}
+.login_card{
+    margin-top: 25%;
+    padding: 2rem .56rem;
+    border-radius: var(--card-border-radius);
+    box-shadow: var(--box-shadow);
+    border: none; 
+    
+}
+.login_img{
+    margin-top: 10%;
+    width: 50rem;
+}
+.login_card .card-body img{
+    width: 7rem;
+    height: 7rem;
+    position: relative;
+    left: 37%;
+}
+.login_card .card-body h4{
+    font-size: 1.5rem;
+    margin-top: 2rem;
+}
+
+input[type="text"] , input[type="password"]{
+    outline: none;
+    border: none;
+    background: var(--color-info-dark);
+    height: 3.5rem;
+}
+
+.form-control:focus {
+    color: #212529;
+    background: var(--color-info-dark) !important;
+    border-color: var(--color-info-dark) !important;
+    outline: none;
+
+}
+.login_button{
+    width: 100%;
+    height: 3.5rem;
+    margin-top: 1.5rem;
+    outline: none;
+    border: none;
+    background: var(--color-main);
+    box-shadow: 0 7px 14px rgb(50 50 93 / 10%), 0 3px 6px rgb(0 0 0 / 8%);
+
+}
+.login_button:hover{
+    box-shadow: 0 7px 14px rgb(50 50 93 / 10%), 0 3px 6px rgb(0 0 0 / 8%);
+    transform: translateY(-1px);
+    background: var(--color-main);
+}
