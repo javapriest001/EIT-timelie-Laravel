@@ -28,6 +28,7 @@ class adminController extends Controller
 
         $staff = users::all();
         $fees = fees::all()->skip(0)->take(3);
+        
 
         return view('admin.dashboard')
         ->with('utility' , $utility)
@@ -156,6 +157,9 @@ class adminController extends Controller
             'category' =>$req->role,
             'password' => Hash::make($req->password)
         ]);
+
+    
+        
         return redirect('admin/staff')->with('success' ,'New Staff Successfully Added');
     }
 

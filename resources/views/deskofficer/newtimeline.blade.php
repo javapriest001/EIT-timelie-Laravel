@@ -9,7 +9,7 @@
 				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 			</div>
 			<div class="modal-body">
-				<form action="{{route('dashboard')}}" method="post">
+				<form action="{{route('deskofficernewtimeline')}}" method="post">
 					@csrf
 					<div class="container">
 						<div class="row justify-content-center text-center py-2">
@@ -19,47 +19,47 @@
 					</div>
 					<label for="username">Date</label>
 					<input class="form-control" id="date" name="date" placeholder="" type="date">
-					<input name="staff_id" type="hidden" value="">
+					<input name="staff_id" type="hidden" value="{{session('staffid')}}">
 					<span class="text-danger">
-						<h6>@error('date'){{ $message }} @enderror</h6>
+						<h6>@error('date'){{ $message }} @enderror</h6> 
 					</span>
 					<label class="mt-3" for="uploads">No Of Uploads</label>
-					<input class="form-control" id="uploads" name="uploads" placeholder="No Of Uploads" type="number">
+					<input class="form-control" oninput="calcBal()" id="uploads" name="uploads" placeholder="No Of Uploads" type="number">
 					<span class="text-danger">
 						<h6>@error('uploads'){{ $message }} @enderror</h6>
 					</span>
 					<label class="mt-3" for="correction">No Of Corrections</label>
-					<input class="form-control" id="correction" name="correction" placeholder="No Of Corrections" type="number">
+					<input class="form-control" oninput="calcBal()" id="correction" name="corrections" placeholder="No Of Corrections" type="number">
 					<span class="text-danger">
 						<h6>@error('correction'){{ $message }} @enderror</h6>
 					</span>
 					<label class="mt-3" for="validation">No Of Validations</label>
-					<input class="form-control" id="validation" name="validation" placeholder="No Of Validations" type="number">
+					<input class="form-control" oninput="calcBal()" id="validation" name="validation" placeholder="No Of Validations" type="number">
 					<span class="text-danger">
 						<h6>@error('validation'){{ $message }} @enderror</h6>
 					</span>
 					<label class="mt-3" for="profile_crtn">No Of Profile Creations</label>
-					<input class="form-control" id="profile_crtn" name="profile_crtn" placeholder="No Of Profile Creations" type="number">
+					<input class="form-control" oninput="calcBal()" id="profile_crtn" name="profile_crtn" placeholder="No Of Profile Creations" type="number">
 					<span class="text-danger">
 						<h6>@error('profile_crtn'){{ $message }} @enderror</h6>
 					</span>
 					<label class="mt-3" for="post_utme">No Of Post UTME</label>
-					<input class="form-control" id="post_utme" name="post_utme" placeholder="No Of Post UTME" type="number">
+					<input class="form-control" oninput="calcBal()" id="post_utme" name="post_utme" placeholder="No Of Post UTME" type="number">
 					<span class="text-danger">
 						<h6>@error('post_utme'){{ $message }} @enderror</h6>
 					</span>
 					<label class="mt-3" for="post_utme">No Of Printing</label>
-					<input class="form-control" id="printing" name="printing" placeholder="No Of Printing" type="number">
+					<input class="form-control" oninput="calcBal()" id="printing" name="printing" placeholder="No Of Printing" type="number">
 					<span class="text-danger">
 						<h6>@error('printing'){{ $message }} @enderror</h6>
 					</span>
 					<label class="mt-3" for="onlinereg">No Of Online Registration</label>
-					<input class="form-control" id="onlinereg" name="onlinereg" placeholder="Online Registration" type="number">
+					<input class="form-control" oninput="calcBal()" id="onlinereg" name="online_reg" placeholder="Online Registration" type="number">
 					<span class="text-danger">
 						<h6>@error('amount'){{ $message }} @enderror</h6>
 					</span>
 					<label class="mt-3" for="part_time">No Of Part-Time Services</label>
-					<input class="form-control" id="part_time" name="amount" placeholder="No Of Part-Time Services" type="number">
+					<input class="form-control" oninput="calcBal()" id="part_time" name="part_time" placeholder="No Of Part-Time Services" type="number">
 					<span class="text-danger">
 						<h6>@error('part_time'){{ $message }} @enderror</h6>
 					</span>
@@ -69,7 +69,7 @@
 								<h4>TOTAL</h4>
 							</div>
 							<div class="col-6">
-								<input class="form-control" id="total1" name="total1" placeholder="Total" type="number" disabled>
+								<input class="form-control" oninput="calcBal()" id="total1" name="total1" placeholder="Total" type="number" disabled>
 
 							</div>
 						</div>

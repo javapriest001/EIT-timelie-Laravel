@@ -25,11 +25,44 @@ class accountantController extends Controller
                 ->skip(0)->take(6);        
 
                 $userdetail = users::where('id' , session('staffid'))->first();
+        
+                
+        $validation = fees::where('Name' , 'Validation')->first();
+        $printing = fees::where('Name' , 'printing')->first();
+        $putme = fees::where('Name' , 'Post Utme')->first();
+        $jambpay = fees::where('Name' , 'jamb Pay Attitude')->first();
+        $jambremita = fees::where('Name' , 'jamb Remita')->first();
+        $onlinereg = fees::where('Name' , 'Online Registration')->first();
+        $profilecrtn = fees::where('Name' , 'Profile Creation')->first();
+        $uploads = fees::where('Name' , 'Uploads')->first();
+        $data = fees::where('Name' , 'Data Correction')->first();
+        $parttime = fees::where('Name' , 'Part Time Services')->first();
        
-        return view('accountant.dashboard')
-        ->with('records' , $accountant)
-        ->with('fees' , $fees)
-        ->with('avatar' , $userdetail);
+        $data = [
+           'records' => $accountant,
+            'fees' => $fees,
+            'avatar' => $userdetail,
+            'validation' => $validation,
+            'printing' => $printing,
+            'putme' => $putme,
+            'jambpay' => $jambpay,
+            'jambremita' => $jambremita,
+            'profilecrtn' => $profilecrtn,
+            'uploads' => $uploads,
+            'data' => $data,
+            'parttime' => $parttime,
+            'Onlinereg' => $onlinereg,
+            
+
+        ];
+
+        // var_dump($data)  ;
+        // return;
+
+   
+     
+        return view('accountant.dashboard' , $data);
+        
     }
 
     
@@ -44,8 +77,8 @@ class accountantController extends Controller
 
         
        
-        return view('accountant.records')
-        ->with('records' , $accountant);
+        return view('accountant.records' , ['records' => $accountant]);
+        
     }
     public function fees(){
 
@@ -53,18 +86,22 @@ class accountantController extends Controller
 
         
        
-        return view('accountant.fees')
-        ->with('records' , $fees);
+        return view('accountant.fees' , ['records' => $fees]);
+      
     }
+
     public function profile(){
 
         
         $numberOfRecords = Accountant::where('staff_id' , session('staffid'))->count();
         
         $userdetail = users::where('id' , session('staffid'))->first();
-        return view('accountant.profile')
-        ->with('data' , $userdetail)
-        ->with('numberOfRecords' , $numberOfRecords);
+        $data = [
+            'data' => $userdetail,
+            'numberOfRecords' => $numberOfRecords
+        ];
+        return view('accountant.profile' , $data);
+        
         
     }
 
@@ -80,7 +117,13 @@ class accountantController extends Controller
         $user->first_name = $req->first_name;
         $user->surname = $req->surname;
         $user->email = $req->email;
-        $user->password = Hash::make($req->password) ;
+
+        if ($req->password) {
+            $user->password = Hash::make($req->password);
+        }
+        $user->password = $user->password;
+        
+        //$user->password =   ;
 
         if ($req->has('file')) {
             $file = $req->file('file');
@@ -96,6 +139,8 @@ class accountantController extends Controller
         
     }
 
+   
+
     public function logout(){
         if (session()->has('staffid')) {
             session()->pull('staffid');
@@ -103,7 +148,39 @@ class accountantController extends Controller
 
         return redirect('/');
     }
-           
+
+    public function addTimeline(Request $req){
+
+        $query = Accountant::create([
+
+            'staff_id'  => $req->staff_id,
+            'date'  => $req->date,
+            'uploads'  => $req->uploads,
+            'correction'  => $req->correction,
+            'post_utme'  => $req->post_utme,
+            'printing'  => $req->printing,
+            'onlinereg'  => $req->onlinereg,
+            'validation'  => $req->validation,
+            'profile_crtn'  => $req->profile_crtn,
+            'part_time'  => $req->part_time,
+            'opening_bal'  => $req->opening_bal, 
+            'jamb_no'  => $req->jamb_no,
+            'jamb_payall'  => $req->jamb_payall,
+            'jamb_remita'  => $req->jamb_remita,
+            //'putme_amt'  => $req->putme_amt,
+            'exp_amt'  => $req->exp_amt,
+            'exp_remark'  => $req->exp_remark
+         
+
+        ]);
+        if ($query) {
+            return redirect('utility/dashboard')->with('success' , 'Record Successfully Added');
+        }
+        return redirect('utility/dashboard')->with('error' , 'There Was An error Adding Record');
+
+
+    }
+    
         
     
 }

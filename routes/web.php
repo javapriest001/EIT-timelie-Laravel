@@ -5,6 +5,7 @@ use App\Http\Controllers\adminController;
 use App\Http\Controllers\deskofficerController;
 use App\Http\Controllers\loginController;
 use App\Http\Controllers\accountantController;
+use App\Http\Controllers\utilityController;
 
 /*
 |--------------------------------------------------------------------------
@@ -16,6 +17,8 @@ use App\Http\Controllers\accountantController;
 | contains the "web" middleware group. Now create something great!
 |
 */
+
+
 
 Route::controller(loginController::class)->group(function(){
     Route::get('/',  'userLoginPage')->name('staffLogin');
@@ -50,6 +53,8 @@ Route::prefix('accountant')->controller(accountantController::class)->middleware
     Route::get('accountantLogout' ,  "logout")->name('accountantLogout');
     Route::get('profile' ,  "profile")->name('profile');
     Route::post('profile' ,  "updateprofile")->name('updateprofile');
+    Route::post('dashboard' ,  "addTimeline")->name('addTimeline');
+    Route::get('tester' ,  "test");
    
 });
 
@@ -62,6 +67,21 @@ Route::prefix('deskofficer')->controller(deskofficerController::class)->middlewa
     Route::get('deskofficerLogout' ,  "logout")->name('deskofficerLogout');
     Route::get('profile' ,  "profile")->name('deskofficerprofile');
     Route::post('profile' ,  "updateprofile")->name('deskofficerupdateprofile');
+    Route::post('dashboard' ,  "addTimeline")->name('deskofficernewtimeline');
    
+});
+
+// UTILITY ROUTE WITH GROUP MIDDLEWARE, AND CONTROLLER
+
+Route::prefix('utilityofficer')->controller(utilityController::class)->group(function(){
+
+    Route::get('dashboard' , "index")->name('utilitydashboard');
+    Route::get('records' , "records")->name('utilityrecords');
+    Route::get('deskofficerLogout' ,  "logout")->name('utilityLogout');
+    Route::get('profile' ,  "profile")->name('utilityprofile');
+    Route::post('profile' ,  "updateprofile")->name('utilityupdateprofile');
+    Route::post('dashboard' ,  "addTimeline")->name('utilityaddnewtimeline');
+   
+
 });
 

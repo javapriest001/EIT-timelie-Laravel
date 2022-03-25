@@ -49,23 +49,31 @@ class loginController extends Controller
         ]);
 
         $users = users::where('email' , $req->username)->first();
+        
         if(!$users){
             return redirect('/')->with('error','User Not Found');
-        }else{
-            if( Hash::check($req->password , $users->password) ){
+        }
+        
+        
+         if( Hash::check($req->password , $users->password) ){
                 
 
                 $category = $users->category;
+
                 $allcategory = ['accountant' , 'deskofficer' , 'utilityofficer'];
+                
                 if(in_array($category , $allcategory)){
+                  
+                    
                     $req->session()->put('staffid' , $users->id);
                     return redirect($category.'/dashboard');
                 }
                 
-            }else{
+            }
+            else{
                 return redirect('/')->with('error', 'Incorrect Password');
             }
-        }
+        
 
     }
 }

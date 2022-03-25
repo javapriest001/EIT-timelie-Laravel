@@ -27,11 +27,37 @@ class deskofficerController extends Controller
                 ->skip(0)->take(6);        
 
                 $userdetail = users::where('id' , session('staffid'))->first();
-       
-        return view('deskofficer.dashboard')
-        ->with('records' , $deskofficer)
-        ->with('fees' , $fees)
-        ->with('avatar' , $userdetail);
+                $validation = fees::where('Name' , 'Validation')->first();
+                $printing = fees::where('Name' , 'printing')->first();
+                $putme = fees::where('Name' , 'Post Utme')->first();
+                $jambpay = fees::where('Name' , 'jamb Pay Attitude')->first();
+                $jambremita = fees::where('Name' , 'jamb Remita')->first();
+                $onlinereg = fees::where('Name' , 'Online Registration')->first();
+                $profilecrtn = fees::where('Name' , 'Profile Creation')->first();
+                $uploads = fees::where('Name' , 'Uploads')->first();
+                $data = fees::where('Name' , 'Data Correction')->first();
+                $parttime = fees::where('Name' , 'Part Time Services')->first();
+
+         
+                $data = [
+                    'records' => $deskofficer,
+                     'fees' => $fees,
+                     'avatar' => $userdetail,
+                     'validation' => $validation,
+                     'printing' => $printing,
+                     'putme' => $putme,
+                     'jambpay' => $jambpay,
+                     'jambremita' => $jambremita,
+                     'profilecrtn' => $profilecrtn,
+                     'uploads' => $uploads,
+                     'data' => $data,
+                     'parttime' => $parttime,
+                     'Onlinereg' => $onlinereg,
+                     
+         
+                 ];        
+        return view('deskofficer.dashboard' , $data);
+        
     }
 
     
@@ -45,19 +71,19 @@ class deskofficerController extends Controller
                 ->get();
 
         $userdetail = users::where('id' , session('staffid'))->first();
-       
-        return view('deskofficer.records')
-        ->with('records' , $deskofficer)
-        ->with('data' , $userdetail);
+       $data =[
+        'records' => $deskofficer,
+        'data' => $userdetail
+       ];
+        return view('deskofficer.records' , $data);
+        
     }
     public function fees(){
 
         $fees = fees::all();
 
-        
+        return view('deskofficer.fees' , ['records' => $fees]);
        
-        return view('deskofficer.fees')
-        ->with('records' , $fees);
     }
     public function profile(){
 
@@ -65,9 +91,12 @@ class deskofficerController extends Controller
         $numberOfRecords = deskOfficer::where('staff_id' , session('staffid'))->count();
         
         $userdetail = users::where('id' , session('staffid'))->first();
-        return view('deskofficer.profile')
-        ->with('data' , $userdetail)
-        ->with('numberOfRecords' , $numberOfRecords);
+        $data=[
+            'data' => $userdetail,
+            'numberOfRecords' => $numberOfRecords
+        ];
+        return view('deskofficer.profile' , $data);
+        
         
     }
 
@@ -83,7 +112,11 @@ class deskofficerController extends Controller
         $user->first_name = $req->first_name;
         $user->surname = $req->surname;
         $user->email = $req->email;
-        $user->password = Hash::make($req->password) ;
+        
+        if ($req->password) {
+            $user->password = Hash::make($req->password);
+        }
+        $user->password = $user->password;
 
         if ($req->has('file')) {
             $file = $req->file('file');
@@ -97,6 +130,33 @@ class deskofficerController extends Controller
        
         return redirect('deskofficer/profile')->with('success' , 'profile updated');
         
+    }
+
+    
+    public function addTimeline(Request $req){
+
+        $query = deskOfficer::create([
+
+            'staff_id'  => $req->staff_id,
+            'date'  => $req->date,
+            'uploads'  => $req->uploads,
+            'corrections'  => $req->corrections,
+            'post_utme'  => $req->post_utme,
+            'printing'  => $req->printing,
+            'online_reg'  => $req->online_reg,
+            'validation'  => $req->validation,
+            'profile_crtn'  => $req->profile_crtn,
+            'part_time'  => $req->part_time,
+           
+         
+
+        ]);
+        if ($query) {
+            return redirect('deskofficer/dashboard')->with('success' , 'Record Successfully Added');
+        }
+        return redirect('deskofficer/dashboard')->with('error' , 'There Was An error Adding Record');
+
+
     }
 
     public function logout(){

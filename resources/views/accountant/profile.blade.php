@@ -130,7 +130,7 @@
                     <span class="text-danger">  <h6>@error('first_name'){{ $message }} @enderror</h6>
                     </span>
                     <label class="mt-3" for="password">Password</label>
-                    <input class="form-control" id="password" name="amount" placeholder="Enter Password" type="number">
+                    <input class="form-control" id="password" name="password"  placeholder="Enter Password" type="text">
                     
                     <span class="text-danger">
                         <h6>@error('amount'){{ $message }} @enderror</h6>

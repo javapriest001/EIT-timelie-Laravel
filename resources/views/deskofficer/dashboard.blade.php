@@ -100,6 +100,72 @@
 
 	</div>
 </div>
+<script>
+	
+	const math = (input, price) => {
 
+
+		return input * price;
+
+
+	}
+	const calc = (a, b) => {
+		return a.value = b.value
+
+	}
+
+	const calcBal = () => {
+
+		let uploadAmt = <?php echo $uploads['Amount']; ?>;
+		let printingAmt = <?php echo $printing['Amount']; ?>;
+		let putmeAmt = <?php echo $putme['Amount']; ?>;
+		let OnlineregAmt = <?php echo $Onlinereg['Amount']; ?>;
+		let profile_crtnAmt = <?php echo $profilecrtn['Amount']; ?>;
+		let CorrectionAmt = <?php echo $data['Amount']; ?>;
+		let part_timeAmt = <?php echo $parttime['Amount']; ?>;
+		let ValidationAmt = <?php echo $validation['Amount']; ?>;
+		let Jamb_pay = <?php echo $jambpay['Amount']; ?>;
+		let Jamb_remita = <?php echo $jambremita['Amount']; ?>;
+
+
+		let upload = document.getElementById('uploads');
+		let print = document.getElementById('printing');
+		let valid = document.getElementById('validation');
+		let correct = document.getElementById('correction');
+		let putme = document.getElementById('post_utme');
+		let onlinereg = document.getElementById('onlinereg');
+		let profile = document.getElementById('profile_crtn');
+		let part = document.getElementById('part_time');
+
+
+
+
+		//SECTION A
+		let uploadC = (upload.value === '') ? 0 : math(parseFloat(upload.value), uploadAmt);
+		let printC = (print.value === '') ? 0 : math(parseFloat(print.value), printingAmt);
+		let validC = (valid.value === '') ? 0 : math(parseFloat(valid.value), ValidationAmt);
+		let correctC = (correct.value === '') ? 0 : math(parseFloat(correct.value), CorrectionAmt);
+		let putmeC = (putme.value === '') ? 0 : math(parseFloat(putme.value), putmeAmt);
+		let onlineregC = (onlinereg.value === '') ? 0 : math(parseFloat(onlinereg.value), OnlineregAmt);
+		let profileC = (profile.value === '') ? 0 : math(parseFloat(profile.value), profile_crtnAmt);
+		let partC = (part.value === '') ? 0 : math(parseFloat(part.value), part_timeAmt);
+
+
+
+		document.getElementById('total1').value = uploadC + correctC + putmeC + printC + profileC + validC + onlineregC + partC
+
+
+
+
+	
+
+
+
+	}
+
+
+
+	
+</script>
 
 @include('deskofficer.Includes.footer')
