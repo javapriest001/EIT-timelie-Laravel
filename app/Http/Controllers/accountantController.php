@@ -60,14 +60,21 @@ class accountantController extends Controller
         // return;
 
    
-     
+
+    
         return view('accountant.dashboard' , $data);
         
     }
 
+    public function singleRecord(Request $req){
+        $query = Accountant::find($req->id);
+      
+        return response()->json(['status' => true, 'result' => $query]);
+    }
+
     
     public function records(){
-
+        $userdetail = users::where('id' , session('staffid'))->first();
         $accountant = DB::table('accountant')
                 ->join('user', 'accountant.staff_id', '=', 'user.id')
                 ->where('staff_id' , session('staffid'))
@@ -75,9 +82,35 @@ class accountantController extends Controller
                 ->skip(0)->take(3)
                 ->get();
 
-        
+                $validation = fees::where('Name' , 'Validation')->first();
+                $printing = fees::where('Name' , 'printing')->first();
+                $putme = fees::where('Name' , 'Post Utme')->first();
+                $jambpay = fees::where('Name' , 'jamb Pay Attitude')->first();
+                $jambremita = fees::where('Name' , 'jamb Remita')->first();
+                $onlinereg = fees::where('Name' , 'Online Registration')->first();
+                $profilecrtn = fees::where('Name' , 'Profile Creation')->first();
+                $uploads = fees::where('Name' , 'Uploads')->first();
+                $data = fees::where('Name' , 'Data Correction')->first();
+                $parttime = fees::where('Name' , 'Part Time Services')->first();
        
-        return view('accountant.records' , ['records' => $accountant]);
+                $data = [
+                    'records' => $accountant,
+                    // 'fees' => $fees,
+                    'avatar' => $userdetail,
+                     'validation' => $validation,
+                     'printing' => $printing,
+                     'putme' => $putme,
+                     'jambpay' => $jambpay,
+                     'jambremita' => $jambremita,
+                     'profilecrtn' => $profilecrtn,
+                     'uploads' => $uploads,
+                     'data' => $data,
+                     'parttime' => $parttime,
+                     'Onlinereg' => $onlinereg,
+                     
+         
+                 ];
+        return view('accountant.records' ,$data);
         
     }
     public function fees(){
@@ -142,9 +175,13 @@ class accountantController extends Controller
    
 
     public function logout(){
+
+
         if (session()->has('staffid')) {
             session()->pull('staffid');
         }
+
+       
 
         return redirect('/');
     }

@@ -49,9 +49,9 @@
                                             <td>{{$record->first_name}}</td>
                                             <td>{{$record->surname}}</td>
                                             <td>{{$record->date}}</td>
-                                            <td><span class="material-icons-sharp text-muted  table_icon">
-                                                    visibility
-                                                </span></td>
+                                            <td><a href="javascript:void(0)" class="viewall" data-code="{{$record->id}}"><span class="material-icons-sharp text-muted  table_icon">
+                                                        visibility
+                                                    </span></a></td>
                                         </tr>
 
                                         @endforeach
@@ -80,4 +80,21 @@
 </div>
 
 
+<div class="modal  fade" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+    <div class="modal-dialog ">
+        <div class="modal-content jquerymodal">
+            <div class="modal-header">
+                <h5 class="modal-title" id="staticBackdropLabel">RECORD</h5>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+
+
+
+
+            </div>
+
+        </div>
+    </div>
+</div>
 @include('deskofficer.Includes.footer')

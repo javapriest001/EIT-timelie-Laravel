@@ -49,6 +49,7 @@ Route::prefix('admin')->controller(adminController::class)->middleware('adminLog
 Route::prefix('accountant')->controller(accountantController::class)->middleware('staffLogin')->group(function(){
     Route::get('dashboard' , "index")->name('Accountantdashboard');
     Route::get('records' , "records")->name('records');
+    Route::post('records' , "singleRecord")->name('singlerecord');
     Route::get('fees' , "fees")->name('fees');
     Route::get('accountantLogout' ,  "logout")->name('accountantLogout');
     Route::get('profile' ,  "profile")->name('profile');
@@ -62,6 +63,7 @@ Route::prefix('accountant')->controller(accountantController::class)->middleware
 
 Route::prefix('deskofficer')->controller(deskofficerController::class)->middleware('staffLogin')->group(function(){
     Route::get('dashboard' , "index")->name('deskofficerdashboard');
+    Route::post('records' , "singleRecord")->name('desksinglerecord');
     Route::get('records' , "records")->name('deskofficerrecords');
     Route::get('fees' , "fees")->name('deskofficerfees');
     Route::get('deskofficerLogout' ,  "logout")->name('deskofficerLogout');

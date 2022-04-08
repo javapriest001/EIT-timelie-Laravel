@@ -652,6 +652,11 @@ textarea{
 .utilityadd form select{
     width: 100%;
 }
+
+.jquerymodal{
+    width: 56rem;
+    margin-left: -11rem;
+}
 /* input[type=file]{
     width: 100%;
     height: 3.5rem;
